@@ -1,293 +1,798 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
-<head>
-    <link rel="icon" type="image/png" href="z.png">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>El Padre Que Nunca Tuve | Don Fer</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Playfair+Display:ital,wght@0,700;1,700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    
-    <style>
-        :root {
-            --oro: #D4AF37;
-            --oro-mate: #C5A028;
-            --negro-profundo: #050505;
-            --blanco-marfil: #FCFCFC;
-            --gris-premium: #F4F4F4;
-        }
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="icon" type="image/png" href="z.png" />
+        <meta
+            property="og:image"
+            content="https://TU_USUARIO.github.io/TU_REPO/z.png"
+        />
 
-        /* --- ANIMACIONES DE ENTRADA --- */
-        @keyframes revealUp {
-            from { opacity: 0; transform: translateY(50px); filter: blur(5px); }
-            to { opacity: 1; transform: translateY(0); filter: blur(0); }
-        }
+        <title>El Padre Que Nunca Tuve | Maestría Masculina</title>
 
-        @keyframes pulseAlert {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.02); }
-            100% { transform: scale(1); }
-        }
+        <link
+            href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;800&family=Poppins:wght@400;700;800&display=swap"
+            rel="stylesheet"
+        />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+        />
+        <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 
-        body { 
-            margin: 0; 
-            font-family: 'Poppins', sans-serif; 
-            background: var(--blanco-marfil); 
-            color: var(--negro-profundo);
-            scroll-behavior: smooth;
-        }
+        <style>
+            :root {
+                --oro: #d4af37;
+                --negro: #0a0a0a;
+                --gris-oscuro: #1a1a1a;
+                --blanco: #ffffff;
+                --fondo-seccion: #f4f4f4;
+            }
 
-        /* BARRA DE URGENCIA DINÁMICA */
-        .urgencia-top {
-            background: #8B0000;
-            color: white;
-            padding: 15px;
-            text-align: center;
-            font-size: 0.8rem;
-            font-weight: bold;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-        }
+            body {
+                background-color: var(--blanco);
+                color: var(--negro);
+                font-family: "Poppins", sans-serif;
+                margin: 0;
+                overflow-x: hidden;
+                line-height: 1.6;
+            }
 
-        /* HEADER */
-        header { 
-            padding: 80px 20px 40px; 
-            text-align: center;
-            animation: revealUp 0.8s ease;
-        }
+            /* Fuentes y estilos generales más bold */
+            h1,
+            h2,
+            h3 {
+                font-family: "Cinzel", serif;
+                font-weight: 800;
+            }
+            p {
+                font-weight: 400;
+            }
+            strong {
+                font-weight: 700;
+            }
 
-        .pre-title { color: var(--oro); font-weight: bold; letter-spacing: 5px; font-size: 0.9rem; margin-bottom: 10px; display: block; }
-        h1 { font-family: 'Cinzel', serif; font-size: clamp(2rem, 5vw, 3.5rem); margin: 0; line-height: 1.1; }
+            /* --- BARRA DE URGENCIA --- */
+            .top-bar {
+                background: #b22222; /* Rojo más intenso */
+                color: white;
+                padding: 12px;
+                text-align: center;
+                font-weight: 800; /* Más bold */
+                font-size: 0.85rem;
+                letter-spacing: 2px;
+                text-transform: uppercase;
+                position: fixed;
+                width: 100%;
+                z-index: 9999;
+                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+                animation: pulseAlert 2s infinite ease-in-out; /* Animación de pulsación */
+            }
+            @keyframes pulseAlert {
+                0% {
+                    background-color: #b22222;
+                }
+                50% {
+                    background-color: #9d1c1c;
+                }
+                100% {
+                    background-color: #b22222;
+                }
+            }
 
-        /* CONSEJO DESTACADO */
-        .consejo-star {
-            max-width: 900px;
-            margin: 60px auto;
-            padding: 60px;
-            background: var(--negro-profundo);
-            color: white;
-            position: relative;
-            border-bottom: 8px solid var(--oro);
-            animation: revealUp 1s ease;
-        }
+            /* --- HERO SECTION --- */
+            header {
+                min-height: 100vh; /* Altura mínima para que siempre ocupe la pantalla */
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                text-align: center;
+                background:
+                    linear-gradient(
+                        rgba(255, 255, 255, 0.95),
+                        rgba(255, 255, 255, 0.95)
+                    ),
+                    url("z.png");
+                background-size: contain;
+                background-position: center;
+                background-repeat: no-repeat;
+                padding: 80px 20px; /* Padding extra para contenido */
+            }
 
-        .consejo-star i { color: var(--oro); font-size: 2rem; margin-bottom: 20px; }
-        .quote-text { 
-            font-family: 'Playfair Display', serif; 
-            font-size: clamp(1.2rem, 3vw, 1.8rem); 
-            font-style: italic; 
-            line-height: 1.6;
-        }
+            h1 {
+                font-size: clamp(2.5rem, 6vw, 4.5rem); /* Tamaño responsivo */
+                margin: 0;
+                color: var(--negro);
+                line-height: 1.1;
+                text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1); /* Sombra para impacto */
+            }
+            .sub-gold {
+                color: var(--oro);
+                letter-spacing: 6px; /* Más espaciado */
+                font-weight: 800;
+                font-size: clamp(0.9rem, 2vw, 1.2rem);
+                margin-bottom: 15px;
+                text-transform: uppercase;
+                display: block;
+            }
 
-        /* MOOSEND FORM */
-        .optin-section {
-            background: var(--gris-premium);
-            padding: 80px 20px;
-            text-align: center;
-        }
+            /* --- CONSEJO Y FILOSOFÍA --- */
+            .filosofia {
+                padding: 120px 20px;
+                background: var(--negro);
+                color: white;
+                text-align: center;
+            }
 
-        .optin-card {
-            max-width: 550px;
-            margin: 0 auto;
-            padding: 40px;
-            background: white;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.05);
-        }
+            .quote-box {
+                max-width: 900px;
+                margin: 0 auto;
+                font-family: "Cinzel", serif;
+                font-size: clamp(
+                    1.4rem,
+                    3.5vw,
+                    2.2rem
+                ); /* Más grande y responsivo */
+                border-left: 5px solid var(--oro); /* Borde más pronunciado */
+                padding-left: 40px;
+                line-height: 1.4;
+                font-weight: 700; /* Más bold */
+            }
 
-        .optin-card h3 { font-family: 'Cinzel'; margin-bottom: 25px; }
+            /* --- GRID DE BENEFICIOS --- */
+            .beneficios {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+                gap: 30px; /* Más separación */
+                padding: 80px 10%;
+                background-color: var(--fondo-seccion);
+            }
 
-        .form-moosend { display: flex; flex-direction: column; gap: 15px; }
-        .form-moosend input {
-            padding: 18px;
-            border: 1px solid #ddd;
-            font-size: 1rem;
-            outline-color: var(--oro);
-        }
+            .b-card {
+                padding: 40px;
+                border: 1px solid #ddd;
+                transition:
+                    transform 0.4s ease,
+                    box-shadow 0.4s ease;
+                text-align: center;
+                background-color: var(--blanco);
+            }
+            .b-card:hover {
+                transform: translateY(-15px) scale(1.02); /* Efecto de levitación más pronunciado */
+                box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15); /* Sombra más fuerte */
+            }
 
-        .btn-submit {
-            background: var(--negro-profundo);
-            color: var(--oro);
-            padding: 18px;
-            border: none;
-            font-weight: bold;
-            cursor: pointer;
-            transition: 0.4s;
-            letter-spacing: 2px;
-        }
-        .btn-submit:hover { background: var(--oro); color: white; }
+            .b-card i {
+                font-size: 3.5rem; /* Iconos más grandes */
+                color: var(--oro);
+                margin-bottom: 25px;
+                filter: drop-shadow(
+                    0 5px 8px rgba(212, 175, 55, 0.3)
+                ); /* Sombra para iconos */
+            }
+            .b-card h3 {
+                font-family: "Cinzel";
+                font-size: 1.6rem;
+                margin-bottom: 15px;
+                font-weight: 700;
+            }
+            .b-card p {
+                font-size: 0.95rem;
+                color: #444;
+            }
 
-        /* TESTIMONIOS ELITE */
-        .testimonios-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            padding: 100px 10%;
-        }
+            /* --- TESTIMONIOS ELITE --- */
+            .testimonios {
+                padding: 100px 10%;
+                background-color: var(--blanco);
+            }
+            .testimonios h2 {
+                text-align: center;
+                font-size: clamp(2rem, 5vw, 3rem);
+                color: var(--negro);
+                margin-bottom: 60px;
+                position: relative;
+            }
+            .testimonios h2::after {
+                content: "";
+                display: block;
+                width: 80px;
+                height: 4px;
+                background: var(--oro);
+                margin: 20px auto 0;
+                border-radius: 2px;
+            }
 
-        .testimonio-card {
-            padding: 40px;
-            background: white;
-            border: 1px solid #eee;
-            transition: 0.3s;
-        }
-        .testimonio-card:hover { border-color: var(--oro); }
-        .testimonio-card p { font-style: italic; color: #444; margin-bottom: 20px; }
-        .autor-box { display: flex; align-items: center; gap: 15px; }
-        .autor-info strong { display: block; font-family: 'Cinzel'; color: var(--oro-oscuro); }
-        .autor-info span { font-size: 0.8rem; opacity: 0.6; }
+            .testimonio-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+                gap: 30px;
+            }
 
-        /* PRECIOS */
-        .pricing-section {
-            display: flex;
-            justify-content: center;
-            gap: 40px;
-            padding: 80px 10%;
-            flex-wrap: wrap;
-            background: var(--negro-profundo);
-        }
+            .t-card {
+                background: var(--fondo-seccion);
+                padding: 35px;
+                border-left: 4px solid var(--oro);
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+                transition: all 0.3s ease;
+            }
+            .t-card:hover {
+                box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+                transform: translateY(-5px);
+            }
+            .t-card p {
+                font-style: italic;
+                color: #333;
+                margin-bottom: 20px;
+                font-size: 0.95rem;
+            }
+            .t-card .autor {
+                font-weight: 700;
+                color: var(--negro);
+                display: block;
+                margin-bottom: 5px;
+            }
+            .t-card .ubicacion {
+                font-size: 0.8rem;
+                color: #666;
+            }
 
-        .price-card {
-            background: white;
-            padding: 60px 40px;
-            width: 320px;
-            text-align: center;
-            transition: 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
+            /* --- NEWSLETTER / MOOSEND FORM --- */
+            .newsletter {
+                padding: 100px 20px;
+                background: var(--negro);
+                color: white;
+                text-align: center;
+            }
 
-        .price-card:hover { transform: translateY(-20px); }
-        .featured { border: 3px solid var(--oro); scale: 1.05; z-index: 10; }
+            .newsletter h3 {
+                font-size: clamp(1.8rem, 4vw, 2.5rem);
+                color: var(--oro);
+                margin-bottom: 25px;
+            }
+            .newsletter p {
+                max-width: 600px;
+                margin: 0 auto 30px;
+                font-size: 1.1rem;
+                line-height: 1.7;
+            }
 
-        .amount { font-size: 4rem; font-weight: bold; margin: 20px 0; }
-        .amount span { font-size: 1rem; opacity: 0.5; }
+            .form-moosend {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 15px;
+                max-width: 700px;
+                margin: 0 auto;
+            }
+            .form-moosend input {
+                padding: 18px 25px;
+                border: 1px solid var(--oro);
+                font-size: 1rem;
+                outline: none;
+                background: var(--blanco);
+                color: var(--negro);
+                flex-grow: 1; /* Permite que el input crezca */
+                min-width: 250px; /* Ancho mínimo para input en móvil */
+            }
+            .form-moosend button {
+                background: var(--oro);
+                color: var(--negro);
+                border: none;
+                padding: 18px 40px;
+                font-weight: 700;
+                cursor: pointer;
+                transition:
+                    background 0.4s ease,
+                    color 0.4s ease,
+                    transform 0.3s ease;
+                letter-spacing: 1px;
+                text-transform: uppercase;
+            }
+            .form-moosend button:hover {
+                background: var(--negro);
+                color: var(--oro);
+                transform: translateY(-3px);
+                box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+            }
 
-        .benefits-list { list-style: none; padding: 0; margin: 30px 0; text-align: left; }
-        .benefits-list li { margin-bottom: 12px; font-size: 0.9rem; }
-        .benefits-list i { color: var(--oro); margin-right: 10px; }
+            /* --- PRICING TABLES --- */
+            .pricing-section {
+                display: flex;
+                justify-content: center;
+                gap: 40px;
+                padding: 100px 10%;
+                flex-wrap: wrap;
+                background: var(--fondo-seccion);
+            }
 
-        .btn-buy {
-            display: block;
-            background: var(--negro-profundo);
-            color: white;
-            padding: 20px;
-            text-decoration: none;
-            font-weight: bold;
-            transition: 0.3s;
-        }
-        .btn-buy.gold { background: var(--oro); color: var(--negro-profundo); }
-        .btn-buy:hover { letter-spacing: 3px; }
+            .price-card {
+                background: var(--blanco);
+                width: 380px; /* Más ancho */
+                padding: 60px 40px; /* Más padding */
+                border-radius: 8px; /* Bordes más suaves */
+                box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+                text-align: center;
+                position: relative;
+                transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1); /* Curva de transición más dinámica */
+                overflow: hidden; /* Para el efecto de brillo */
+            }
 
-        .payments { margin-top: 25px; opacity: 0.6; font-size: 1.5rem; }
-        .payments i { margin: 0 10px; }
+            .price-card::before {
+                /* Efecto de brillo al pasar el mouse */
+                content: "";
+                position: absolute;
+                top: 0;
+                left: -100%;
+                width: 100%;
+                height: 100%;
+                background: rgba(255, 255, 255, 0.1);
+                transform: skewX(-30deg);
+                transition: all 0.7s ease;
+            }
+            .price-card:hover::before {
+                left: 100%;
+            }
 
-        footer { text-align: center; padding: 60px; opacity: 0.4; font-size: 0.8rem; }
+            .price-card.featured {
+                border: 4px solid var(--oro); /* Borde más grueso */
+                transform: scale(1.08) translateY(-20px); /* Más grande y elevado */
+                box-shadow:
+                    0 30px 60px rgba(212, 175, 55, 0.2),
+                    0 0 0 5px rgba(212, 175, 55, 0.3); /* Doble sombra */
+                z-index: 10;
+            }
+            .price-card.featured .tag {
+                background: var(--oro);
+                color: var(--negro);
+                padding: 8px 20px;
+                font-size: 0.8rem;
+                font-weight: 800;
+                position: absolute;
+                top: 0;
+                left: 50%;
+                transform: translateX(-50%) translateY(-50%);
+                border-radius: 20px;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+                letter-spacing: 1px;
+            }
 
-    </style>
-</head>
-<body>
+            .price-card h2 {
+                font-size: 2.5rem;
+                margin-bottom: 30px;
+                color: var(--negro);
+            }
+            .amount {
+                font-size: 5rem;
+                font-weight: 800;
+                margin: 20px 0;
+                color: var(--negro);
+            }
+            .amount span {
+                font-size: 1.2rem;
+                color: #888;
+                font-weight: 600;
+            }
 
-    <div class="urgencia-top">
-        ⚠️ AVISO: El precio de lanzamiento expira en 48 horas. Solo 7 cupos disponibles.
-    </div>
+            .list-benefits {
+                list-style: none;
+                padding: 0;
+                margin: 40px 0;
+                text-align: left;
+                font-size: 1rem;
+                color: #333;
+            }
+            .list-benefits li {
+                margin-bottom: 15px;
+                display: flex;
+                align-items: center;
+            }
+            .list-benefits li i {
+                color: var(--oro);
+                margin-right: 15px;
+                font-size: 1.2rem;
+            }
 
-    <header>
-        <span class="pre-title">FORMACIÓN DE AUTORIDAD</span>
-        <h1>EL PADRE QUE NUNCA TUVE</h1>
-    </header>
+            .btn-cta-plan {
+                display: block;
+                background: var(--negro);
+                color: var(--blanco);
+                padding: 22px;
+                text-decoration: none;
+                font-weight: 800;
+                margin-top: 35px;
+                transition: all 0.4s ease;
+                letter-spacing: 2px;
+                text-transform: uppercase;
+                border-radius: 4px;
+            }
+            .btn-cta-plan.gold {
+                background: var(--oro);
+                color: var(--negro);
+                box-shadow: 0 10px 30px rgba(212, 175, 55, 0.4);
+            }
+            .btn-cta-plan:hover {
+                transform: translateY(-5px);
+                opacity: 0.9;
+                box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+            }
 
-    <main>
-        <section class="consejo-star">
-            <i class="fas fa-quote-left"></i>
-            <p class="quote-text">
-                "En la escuela te prohibieron copiar, pero en la vida real <strong>está permitido copiar para triunfar</strong>. Si quieres superar a la competencia, identifica al mejor, replica su técnica y luego supéralo. No reinventes la rueda, haz que ruede más rápido."
-            </p>
-            <p style="text-align: right; color: var(--oro); font-weight: bold; margin-top: 30px;">— DON FER</p>
-        </section>
+            .payment-logos {
+                margin-top: 30px;
+                font-size: 2rem;
+                color: #555;
+                display: flex;
+                justify-content: center;
+                gap: 15px;
+                flex-wrap: wrap;
+            }
+            .payment-logos i {
+                transition: color 0.3s ease;
+            }
+            .payment-logos i:hover {
+                color: var(--oro);
+            }
+            .payment-logos span {
+                font-size: 0.8rem;
+                font-weight: 600;
+                align-self: center;
+                color: #444;
+            }
 
-        <section class="optin-section">
-            <div class="optin-card">
-                <h3>DESCARGA LA GUÍA: <br><span style="color: var(--oro);">SER UN HOMBRE DE VERDAD</span></h3>
-                <p>Ingresa tu correo para recibir la lección completa y el manual de mecánica mental.</p>
-                
-                <form action="TU_URL_DE_SUBCRIPCION_DE_MOOSEND" method="post" class="form-moosend">
-                    <input type="email" name="ms-email" placeholder="Tu correo electrónico principal" required>
-                    <button type="submit" class="btn-submit">QUIERO LA GUÍA GRATIS</button>
+            footer {
+                text-align: center;
+                padding: 60px;
+                opacity: 0.5;
+                font-size: 0.8rem;
+                color: #333;
+            }
+
+            /* Media Queries para Responsividad */
+            @media (max-width: 768px) {
+                header {
+                    min-height: 80vh;
+                    padding: 60px 15px;
+                }
+                h1 {
+                    font-size: clamp(2rem, 8vw, 3.5rem);
+                }
+                .sub-gold {
+                    font-size: clamp(0.8rem, 3vw, 1rem);
+                    letter-spacing: 4px;
+                }
+                .filosofia {
+                    padding: 80px 15px;
+                }
+                .quote-box {
+                    font-size: clamp(1.2rem, 4vw, 1.8rem);
+                    padding-left: 20px;
+                }
+                .beneficios,
+                .testimonios-grid,
+                .pricing-section {
+                    padding: 50px 5%;
+                }
+                .b-card,
+                .t-card,
+                .price-card {
+                    margin-bottom: 20px;
+                }
+                .form-moosend {
+                    flex-direction: column;
+                    align-items: stretch;
+                }
+                .form-moosend input,
+                .form-moosend button {
+                    width: 100%;
+                    min-width: unset;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <div class="top-bar">
+            ⚠️ EL PRECIO SUBE EN: <span id="timer">48:00:00</span> | SÓLO 7
+            CUPOS DISPONIBLES
+        </div>
+
+        <header>
+            <span class="sub-gold" data-aos="fade-down" data-aos-once="true"
+                >EL PADRE QUE NUNCA TUVE</span
+            >
+            <h1 data-aos="fade-up" data-aos-delay="200" data-aos-once="true">
+                FORJA AL HOMBRE DE ÉLITE <br />
+                QUE SIEMPRE DEBISTE SER
+            </h1>
+        </header>
+
+        <main>
+            <section class="filosofia">
+                <div class="quote-box" data-aos="zoom-in" data-aos-once="true">
+                    "En la escuela te prohíben copiar; en el mundo real, si no
+                    copias al mejor, nunca llegarás a la cima."
+                </div>
+            </section>
+
+            <section class="beneficios">
+                <div class="b-card" data-aos="fade-up" data-aos-once="true">
+                    <i class="fas fa-handshake"></i>
+                    <h3>Relaciones</h3>
+                    <p>
+                        Domina el arte de atraer, seducir y construir relaciones
+                        profundas con mujeres de alto valor. Deja de adivinar.
+                    </p>
+                </div>
+                <div
+                    class="b-card"
+                    data-aos="fade-up"
+                    data-aos-delay="150"
+                    data-aos-once="true"
+                >
+                    <i class="fas fa-gem"></i>
+                    <h3>Lookmaxing</h3>
+                    <p>
+                        Maximiza tu atractivo facial, corporal y tu estilo
+                        personal. Proyecta una presencia magnética y de
+                        autoridad.
+                    </p>
+                </div>
+                <div
+                    class="b-card"
+                    data-aos="fade-up"
+                    data-aos-delay="300"
+                    data-aos-once="true"
+                >
+                    <i class="fas fa-shield-alt"></i>
+                    <h3>Carácter</h3>
+                    <p>
+                        Forja la disciplina inquebrantable, la mentalidad
+                        inquebrantable y la resiliencia que un hombre de verdad
+                        necesita.
+                    </p>
+                </div>
+                <div
+                    class="b-card"
+                    data-aos="fade-up"
+                    data-aos-delay="450"
+                    data-aos-once="true"
+                >
+                    <i class="fas fa-wallet"></i>
+                    <h3>Dinero</h3>
+                    <p>
+                        Desbloquea las claves mentales y prácticas para generar
+                        riqueza y prosperidad, liberándote de la escasez.
+                    </p>
+                </div>
+            </section>
+
+            <section class="testimonios">
+                <h2 data-aos="fade-up" data-aos-once="true">
+                    VOCES DE HOMBRES TRANSFORMADOS
+                </h2>
+                <div class="testimonio-grid">
+                    <div
+                        class="t-card"
+                        data-aos="fade-right"
+                        data-aos-delay="0"
+                        data-aos-once="true"
+                    >
+                        <p>
+                            "Don Fer no solo te habla de mecánica; te habla de
+                            la vida. Gracias a sus consejos mi relación mejoró y
+                            mi estilo dio un giro de 180 grados."
+                        </p>
+                        <span class="autor">Alejandro "Alex" Ríos</span>
+                        <span class="ubicacion">CDMX, México</span>
+                    </div>
+                    <div
+                        class="t-card"
+                        data-aos="fade-right"
+                        data-aos-delay="150"
+                        data-aos-once="true"
+                    >
+                        <p>
+                            "I came for the advanced mechanics, but stayed for
+                            the life lessons. Don Fer teaches you how to be a
+                            high-value man, in any field."
+                        </p>
+                        <span class="autor">Mark Johnson</span>
+                        <span class="ubicacion">San Diego, USA</span>
+                    </div>
+                    <div
+                        class="t-card"
+                        data-aos="fade-right"
+                        data-aos-delay="300"
+                        data-aos-once="true"
+                    >
+                        <p>
+                            "Desde Chiapas, un saludo a Don Fer. Me enseñó a
+                            confiar en mí mismo, a no temer a las mujeres
+                            bonitas y a cuidar mi presencia. Un verdadero
+                            maestro."
+                        </p>
+                        <span class="autor">Juan Carlos Gómez</span>
+                        <span class="ubicacion">San Cristóbal, Chiapas</span>
+                    </div>
+                    <div
+                        class="t-card"
+                        data-aos="fade-right"
+                        data-aos-delay="450"
+                        data-aos-once="true"
+                    >
+                        <p>
+                            "Pasé de ser el chico invisible a tener confianza
+                            con las mujeres. Los consejos de Don Fer sobre
+                            lookmaxing y cómo hablar con ellas, ¡son oro puro!"
+                        </p>
+                        <span class="autor">Ricardo "Richie" M.</span>
+                        <span class="ubicacion">León, GTO. México</span>
+                    </div>
+                </div>
+            </section>
+
+            <section class="newsletter">
+                <h3 data-aos="fade-up" data-aos-once="true">
+                    ÚNETE A LA LOGIA DE HOMBRES ELITE
+                </h3>
+                <p data-aos="fade-up" data-aos-delay="100" data-aos-once="true">
+                    Recibe la guía exclusiva "Ser un Hombre de Verdad" y acceso
+                    anticipado a nuevas formaciones directamente en tu correo.
+                    Transforma tu realidad desde hoy.
+                </p>
+
+                <form
+                    action="TU_URL_DE_MOOSEND_AQUÍ"
+                    method="POST"
+                    class="form-moosend"
+                    data-aos="fade-up"
+                    data-aos-delay="200"
+                    data-aos-once="true"
+                >
+                    <input
+                        type="email"
+                        name="ms-email"
+                        placeholder="Tu correo electrónico (confidencial)"
+                        required
+                    />
+                    <button type="submit">QUIERO LA GUÍA DE ÉLITE</button>
                 </form>
-            </div>
-        </section>
+            </section>
 
-        <section class="testimonios-grid">
-            <div class="testimonio-card">
-                <p>"Don Fer no solo arregló mi Specialized de carbono; arregló mi mentalidad. Sus consejos sobre disciplina son tan precisos como sus ajustes de cambios."</p>
-                <div class="autor-box">
-                    <div class="autor-info">
-                        <strong>Alejandro Villarreal</strong>
-                        <span>Monterrey, MX</span>
+            <section class="pricing-section">
+                <div
+                    class="price-card"
+                    data-aos="zoom-in-up"
+                    data-aos-once="true"
+                >
+                    <h2>BASIC</h2>
+                    <div class="amount">1$ <span>/sem</span></div>
+                    <ul class="list-benefits">
+                        <li>
+                            <i class="fas fa-check-circle"></i> Acceso a la
+                            comunidad "La Forja"
+                        </li>
+                        <li>
+                            <i class="fas fa-check-circle"></i> Tips exclusivos
+                            de Relaciones y Estilo
+                        </li>
+                        <li>
+                            <i class="fas fa-check-circle"></i> Guía "Ser un
+                            Hombre de Verdad" (versión light)
+                        </li>
+                        <li>
+                            <i class="fas fa-check-circle"></i> Contenido
+                            semanal sobre Maestría Masculina
+                        </li>
+                    </ul>
+                    <a
+                        href="https://wa.me/529631466941?text=Hola%20Don%20Fer,%20quiero%20el%20plan%20BASIC%20de%201%20dolar"
+                        class="btn-cta-plan"
+                        >EMPEZAR CAMINO</a
+                    >
+
+                    <div class="payment-logos">
+                        <i class="fab fa-cc-visa"></i>
+                        <i class="fab fa-cc-mastercard"></i>
+                        <i class="fab fa-cc-paypal"></i>
+                        <span style="font-size: 0.8rem; font-weight: bold"
+                            >MERCADO PAGO</span
+                        >
                     </div>
                 </div>
-            </div>
 
-            <div class="testimonio-card" style="background: var(--gris-premium);">
-                <p>"The best $3 I spend a week. His experience in the US is evident. He explains high-end mechanics in a way that anyone can master."</p>
-                <div class="autor-box">
-                    <div class="autor-info">
-                        <strong>Robert S. Harrison</strong>
-                        <span>Houston, TX</span>
+                <div
+                    class="price-card featured"
+                    data-aos="zoom-in-up"
+                    data-aos-delay="200"
+                    data-aos-once="true"
+                >
+                    <div class="tag">¡MÁS BUSCADO!</div>
+                    <h2>ELITE PLUS</h2>
+                    <div class="amount">3$ <span>/sem</span></div>
+                    <ul class="list-benefits">
+                        <li>
+                            <i class="fas fa-star"></i>
+                            <strong>Mentoría Directa con Don Fer</strong>
+                        </li>
+                        <li>
+                            <i class="fas fa-star"></i> Curso Avanzado:
+                            "Atracción y Lenguaje Corporal"
+                        </li>
+                        <li>
+                            <i class="fas fa-star"></i> Técnicas de Lookmaxing
+                            Avanzado (facial y físico)
+                        </li>
+                        <li>
+                            <i class="fas fa-star"></i> Módulos de Finanzas y
+                            Liderazgo Masculino
+                        </li>
+                        <li>
+                            <i class="fas fa-star"></i> Acceso VIP a eventos
+                            exclusivos
+                        </li>
+                    </ul>
+                    <a
+                        href="https://wa.me/529631466941?text=Hola%20Don%20Fer,%20quiero%20el%20plan%20ELITE%20PLUS%20de%203%20dolares"
+                        class="btn-cta-plan gold"
+                        >ADQUIRIR FORMACIÓN ELITE</a
+                    >
+
+                    <div class="payment-logos">
+                        <i class="fab fa-cc-visa"></i>
+                        <i class="fab fa-cc-mastercard"></i>
+                        <i class="fab fa-cc-paypal"></i>
+                        <span style="font-size: 0.8rem; font-weight: bold"
+                            >MERCADO PAGO</span
+                        >
                     </div>
                 </div>
-            </div>
+            </section>
+        </main>
 
-            <div class="testimonio-card">
-                <p>"Pensé que sabía de bicis hasta que entré al curso Plus. La comunidad 'La Forja' es el grupo de hombres que necesitaba para crecer."</p>
-                <div class="autor-box">
-                    <div class="autor-info">
-                        <strong>Carlos Ortega</strong>
-                        <span>CDMX</span>
-                    </div>
-                </div>
-            </div>
-        </section>
+        <footer>
+            &copy; 2024 Fernando Zapoteco | Forjando Hombres de Élite. Todos los
+            derechos reservados.
+        </footer>
 
-        <section class="pricing-section">
-            <div class="price-card">
-                <h3 style="font-family: 'Cinzel';">BASIC</h3>
-                <div class="amount">1$<span>/sem</span></div>
-                <ul class="benefits-list">
-                    <li><i class="fas fa-check"></i> Acceso a "MENTALIDAD"</li>
-                    <li><i class="fas fa-check"></i> Tips semanales </li>
-                    <li><i class="fas fa-check"></i> Guía de supervivencia</li>
-                </ul>
-                <a href="https://wa.me/529631466941?text=Quiero%20el%20plan%20Basic" class="btn-buy">EMPEZAR AHORA</a>
-            </div>
+        <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+        <script>
+            // INICIALIZACIÓN DE ANIMACIONES AOS
+            AOS.init({
+                duration: 1000, // Duración de la animación en milisegundos
+                easing: "ease-out-quad", // Tipo de aceleración para la animación
+                once: true, // Las animaciones solo se ejecutan una vez al entrar en la vista
+                mirror: false, // No hay animación al hacer scroll hacia arriba
+            });
 
-            <div class="price-card featured">
-                <div style="background: var(--oro); color: white; position: absolute; top:0; left:0; width:100%; padding:10px 0; font-size: 0.7rem; font-weight: bold; letter-spacing: 2px;">RECOMENDADO</div>
-                <h3 style="font-family: 'Cinzel';">PLUS</h3>
-                <div class="amount">3$<span>/sem</span></div>
-                <ul class="benefits-list">
-                    <li><i class="fas fa-star"></i> <strong>Mentoría Directa Don Fer</strong></li>
-                    <li><i class="fas fa-star"></i> Acceso a canal privado de discord</li>
-                    <li><i class="fas fa-star"></i> Secretos de finanzas/li>
-                    <li><i class="fas fa-star"></i> Formación personalizada</li>
-                </ul>
-                <a href="https://wa.me/529631466941?text=Quiero%20el%20plan%20Plus" class="btn-buy gold">ADQUIRIR ACCESO PLUS</a>
-                
-                <div class="payments">
-                    <i class="fab fa-cc-visa"></i>
-                    <i class="fab fa-cc-mastercard"></i>
-                    <i class="fab fa-cc-paypal"></i>
-                    <p style="font-size: 0.7rem; font-weight: bold; margin-top: 10px;">MERCADO PAGO</p>
-                </div>
-            </div>
-        </section>
-    </main>
+            // INSTRUCCIONES DE EDICIÓN: SCRIPT DEL CONTADOR DE URGENCIA
+            // Este es un contador simulado. Si quieres uno real, necesitarías una base de datos o un servicio externo.
+            // Aquí puedes cambiar el tiempo inicial (en segundos).
+            let timeLeft = 48 * 3600; // 48 horas en segundos (48 * 60 minutos * 60 segundos)
+            const timerElement = document.getElementById("timer");
 
-    <footer>
-        &copy; 2024 Fernando Zapoteco | Ingeniería y Carácter.
-    </footer>
+            function updateTimer() {
+                const hours = Math.floor(timeLeft / 3600);
+                const minutes = Math.floor((timeLeft % 3600) / 60);
+                const seconds = timeLeft % 60;
 
-</body>
+                timerElement.textContent =
+                    `${String(hours).padStart(2, "0")}:` +
+                    `${String(minutes).padStart(2, "0")}:` +
+                    `${String(seconds).padStart(2, "0")}`;
+
+                if (timeLeft > 0) {
+                    timeLeft--;
+                } else {
+                    timerElement.textContent = "00:00:00"; // Detener en cero
+                    // Aquí podrías agregar lógica para cambiar el mensaje o deshabilitar algo
+                }
+            }
+
+            // Actualizar el contador cada segundo
+            setInterval(updateTimer, 1000);
+            updateTimer(); // Llamar inmediatamente para mostrar el tiempo al cargar
+        </script>
+    </body>
 </html>
