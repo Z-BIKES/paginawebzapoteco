@@ -1,0 +1,366 @@
+<!doctype html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8" />
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+        />
+        <title>Pasarela Elite | Don Fer</title>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Poppins:wght@400;600;800&display=swap"
+            rel="stylesheet"
+        />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+        />
+        <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+
+        <style>
+            :root {
+                --oro: #d4af37;
+                --negro: #0a0a0a;
+                --blanco: #ffffff;
+                --azul-mp: #009ee3;
+                --azul-tg: #229ed9;
+            }
+
+            * {
+                box-sizing: border-box;
+                margin: 0;
+                padding: 0;
+            }
+
+            body {
+                background-color: #f0f2f5;
+                color: var(--negro);
+                font-family: "Poppins", sans-serif;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                padding: 20px;
+                overflow-x: hidden;
+            }
+
+            /* --- TARJETA PRINCIPAL CON BORDE ANIMADO --- */
+            .main-card {
+                background: var(--blanco);
+                padding: 40px 25px;
+                border-radius: 24px;
+                max-width: 480px;
+                width: 100%;
+                text-align: center;
+                box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+                position: relative;
+                margin-bottom: 30px;
+                border: 2px solid var(--negro);
+                animation: fadeInScale 0.8s
+                    cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            }
+
+            @keyframes fadeInScale {
+                from {
+                    opacity: 0;
+                    transform: scale(0.9);
+                }
+                to {
+                    opacity: 1;
+                    transform: scale(1);
+                }
+            }
+
+            h2 {
+                font-family: "Cinzel";
+                font-size: 1.8rem;
+                margin-bottom: 5px;
+            }
+
+            .badge-premium {
+                display: inline-block;
+                background: linear-gradient(45deg, var(--oro), #ffecb3);
+                color: #000;
+                padding: 6px 15px;
+                border-radius: 50px;
+                font-weight: 800;
+                font-size: 0.75rem;
+                margin-bottom: 20px;
+                animation: glow 2s infinite alternate;
+            }
+
+            @keyframes glow {
+                from {
+                    box-shadow: 0 0 5px rgba(212, 175, 55, 0.5);
+                }
+                to {
+                    box-shadow: 0 0 20px rgba(212, 175, 55, 0.8);
+                }
+            }
+
+            /* --- PASOS ANIMADOS --- */
+            .step-item {
+                display: flex;
+                align-items: center;
+                gap: 15px;
+                margin-bottom: 15px;
+                padding: 15px;
+                background: #fdfdfd;
+                border-radius: 12px;
+                border: 1px solid #eee;
+                transition: 0.3s;
+            }
+
+            .step-item:hover {
+                transform: translateX(10px);
+                background: #fff;
+                border-color: var(--oro);
+            }
+
+            .step-number {
+                background: var(--negro);
+                color: var(--oro);
+                width: 30px;
+                height: 30px;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-weight: 800;
+                flex-shrink: 0;
+            }
+
+            /* --- BOTONES CON ANIMACIÓN --- */
+            .btn-action {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 12px;
+                padding: 20px;
+                border-radius: 15px;
+                text-decoration: none;
+                font-weight: 800;
+                text-transform: uppercase;
+                margin-bottom: 15px;
+                transition: 0.4s;
+                position: relative;
+                overflow: hidden;
+            }
+
+            /* Botón Mercado Pago con Brillo */
+            .btn-mp {
+                background: var(--azul-mp);
+                color: white;
+            }
+            .btn-mp::after {
+                content: "";
+                position: absolute;
+                top: -50%;
+                left: -60%;
+                width: 20%;
+                height: 200%;
+                background: rgba(255, 255, 255, 0.3);
+                transform: rotate(30deg);
+                animation: shine 3s infinite;
+            }
+
+            @keyframes shine {
+                0% {
+                    left: -60%;
+                }
+                20% {
+                    left: 120%;
+                }
+                100% {
+                    left: 120%;
+                }
+            }
+
+            /* Botón Telegram con Pulso */
+            .btn-tg {
+                background: var(--azul-tg);
+                color: white;
+                animation: pulse-blue 2s infinite;
+            }
+
+            @keyframes pulse-blue {
+                0% {
+                    box-shadow: 0 0 0 0 rgba(34, 158, 217, 0.7);
+                }
+                70% {
+                    box-shadow: 0 0 0 15px rgba(34, 158, 217, 0);
+                }
+                100% {
+                    box-shadow: 0 0 0 0 rgba(34, 158, 217, 0);
+                }
+            }
+
+            /* --- REVIEWS CON ENTRADA STAGGER --- */
+            .review-card {
+                background: white;
+                padding: 15px;
+                border-radius: 12px;
+                margin-bottom: 12px;
+                display: flex;
+                gap: 12px;
+                box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+                opacity: 0;
+                transform: translateY(20px);
+                animation: slideIn 0.5s forwards;
+            }
+
+            .review-card:nth-child(2) {
+                animation-delay: 0.2s;
+            }
+            .review-card:nth-child(3) {
+                animation-delay: 0.4s;
+            }
+            .review-card:nth-child(4) {
+                animation-delay: 0.6s;
+            }
+
+            @keyframes slideIn {
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+
+            .avatar {
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+                background: #000;
+                color: var(--oro);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-weight: 800;
+                flex-shrink: 0;
+            }
+            .rev-content b {
+                font-size: 0.85rem;
+            }
+            .rev-content p {
+                font-size: 0.8rem;
+                color: #555;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="main-card">
+            <div class="badge-premium">
+                <i class="fas fa-crown"></i> ELITE MEMBER
+            </div>
+            <h2>PASARELA SEGURA</h2>
+            <p style="font-size: 0.8rem; color: #666; margin-bottom: 25px">
+                Sigue los pasos para activar tu membresía
+            </p>
+
+            <div class="step-item">
+                <div class="step-number">1</div>
+                <div style="text-align: left">
+                    <b style="font-size: 0.9rem">PAGA EN MERCADO LIBRE</b>
+                    <p style="font-size: 0.75rem; color: #777">
+                        Haz clic en el botón azul de abajo.
+                    </p>
+                </div>
+            </div>
+
+            <div class="step-item">
+                <div class="step-number">2</div>
+                <div style="text-align: left">
+                    <b style="font-size: 0.9rem">TOMA UNA CAPTURA</b>
+                    <p style="font-size: 0.75rem; color: #777">
+                        Guarda el ticket de confirmación.
+                    </p>
+                </div>
+            </div>
+
+            <div class="step-item">
+                <div class="step-number">3</div>
+                <div style="text-align: left">
+                    <b style="font-size: 0.9rem">ENVÍA Y RECIBE</b>
+                    <p style="font-size: 0.75rem; color: #777">
+                        Mándalo a Telegram para tu acceso.
+                    </p>
+                </div>
+            </div>
+
+            <a
+                href="https://mpago.la/2uwoCU3"
+                class="btn-action btn-mp"
+                onclick="lanzarConfeti()"
+            >
+                <i class="fas fa-shopping-cart"></i> PAGAR AHORA ($3)
+            </a>
+
+            <a
+                href="https://t.me/+529631466941"
+                target="_blank"
+                class="btn-action btn-tg"
+            >
+                <i class="fab fa-telegram-plane"></i> ENVIAR TICKET AQUÍ
+            </a>
+        </div>
+
+        <div style="width: 100%; max-width: 480px">
+            <h3
+                style="
+                    text-align: center;
+                    font-size: 0.8rem;
+                    color: #888;
+                    margin-bottom: 15px;
+                    text-transform: uppercase;
+                    letter-spacing: 1px;
+                "
+            >
+                Confirmaciones recientes
+            </h3>
+
+            <div class="review-card">
+                <div class="avatar">JS</div>
+                <div class="rev-content">
+                    <b
+                        >Juan Sánchez
+                        <i
+                            class="fas fa-check-circle"
+                            style="color: #1da1f2"
+                        ></i
+                    ></b>
+                    <p>
+                        Pago listo. Don Fer me activó en menos de lo que
+                        esperaba. ¡A darle!
+                    </p>
+                </div>
+            </div>
+
+            <div class="review-card">
+                <div class="avatar">AM</div>
+                <div class="rev-content">
+                    <b
+                        >Arturo M.
+                        <i
+                            class="fas fa-check-circle"
+                            style="color: #1da1f2"
+                        ></i
+                    ></b>
+                    <p>
+                        El proceso es súper rápido. Mandas la foto al Telegram y
+                        ya estás dentro.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            function lanzarConfeti() {
+                confetti({
+                    particleCount: 150,
+                    spread: 70,
+                    origin: { y: 0.6 },
+                    colors: ["#D4AF37", "#000000", "#ffffff"],
+                });
+            }
+        </script>
+    </body>
+</html>
