@@ -22,6 +22,42 @@
         <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 
         <style>
+            /* Estilo base para ambos botones */
+.btn-cta-plan {
+    display: block;
+    padding: 18px 25px;
+    margin: 25px 0;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    text-align: center;
+    background: #000;
+    color: #fff;
+    border: 2px solid #000;
+}
+
+/* Efecto para el botón Elite (Dorado Animado) */
+.btn-gold-anim {
+    background: #D4AF37 !important;
+    color: #000 !important;
+    border-color: #000 !important;
+    animation: pulse-gold 2s infinite;
+}
+
+.btn-cta-plan:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    filter: brightness(1.1);
+}
+
+@keyframes pulse-gold {
+    0% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.7); }
+    70% { box-shadow: 0 0 0 15px rgba(212, 175, 55, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0); }
+}
             :root {
                 --oro: #d4af37;
                 --negro: #0a0a0a;
@@ -666,93 +702,52 @@
 </section>
 
             <section class="pricing-section">
-                <div
-                    class="price-card"
-                    data-aos="zoom-in-up"
-                    data-aos-once="true"
-                >
-                    <h2>BASIC</h2>
-                    <div class="amount">1$ <span>/sem</span></div>
-                    <ul class="list-benefits">
-                        <li>
-                            <i class="fas fa-check-circle"></i> Acceso a la
-                            comunidad "La Forja"
-                        </li>
-                        <li>
-                            <i class="fas fa-check-circle"></i> Tips exclusivos
-                            de Relaciones y Estilo
-                        </li>
-                        <li>
-                            <i class="fas fa-check-circle"></i> Guía "Ser un
-                            Hombre de Verdad" (versión light)
-                        </li>
-                        <li>
-                            <i class="fas fa-check-circle"></i> Contenido
-                            semanal sobre Maestría Masculina
-                        </li>
-                    </ul>
-                    <a
-                        href="https://wa.me/529631466941?text=Hola%20Don%20Fer,%20quiero%20el%20plan%20BASIC%20de%201%20dolar"
-                        class="btn-cta-plan"
-                        >EMPEZAR CAMINO</a
-                    >
+    <div class="price-card" data-aos="zoom-in-up" data-aos-once="true">
+        <h2>BASIC</h2>
+        <div class="amount">1$ <span>/sem</span></div>
+        <ul class="list-benefits">
+            <li><i class="fas fa-check-circle"></i> Acceso a la comunidad "La Forja"</li>
+            <li><i class="fas fa-check-circle"></i> Tips exclusivos de Relaciones y Estilo</li>
+            <li><i class="fas fa-check-circle"></i> Guía "Ser un Hombre de Verdad" (Light)</li>
+            <li><i class="fas fa-check-circle"></i> Contenido semanal de Maestría Masculina</li>
+        </ul>
+        
+        <a href="pasarela-basic.html" class="btn-cta-plan">
+            EMPEZAR CAMINO
+        </a>
 
-                    <div class="payment-logos">
-                        <i class="fab fa-cc-visa"></i>
-                        <i class="fab fa-cc-mastercard"></i>
-                        <i class="fab fa-cc-paypal"></i>
-                        <span style="font-size: 0.8rem; font-weight: bold"
-                            >MERCADO PAGO</span
-                        >
-                    </div>
-                </div>
+        <div class="payment-logos">
+            <i class="fab fa-cc-visa"></i>
+            <i class="fab fa-cc-mastercard"></i>
+            <i class="fab fa-cc-paypal"></i>
+            <span style="font-size: 0.8rem; font-weight: bold">MERCADO PAGO</span>
+        </div>
+    </div>
 
-                <div
-                    class="price-card featured"
-                    data-aos="zoom-in-up"
-                    data-aos-delay="200"
-                    data-aos-once="true"
-                >
-                    <div class="tag">.</div>
-                    <h2>ELITE PLUS</h2>
-                    <div class="amount">3$ <span>/sem</span></div>
-                    <ul class="list-benefits">
-                        <li>
-                            <i class="fas fa-star"></i>
-                            <strong>Mentoría Directa con Don Fer</strong>
-                        </li>
-                        <li>
-                            <i class="fas fa-star"></i> Curso Avanzado:
-                            "Atracción y Lenguaje Corporal"
-                        </li>
-                        <li>
-                            <i class="fas fa-star"></i> Técnicas de Lookmaxing
-                            Avanzado (facial y físico)
-                        </li>
-                        <li>
-                            <i class="fas fa-star"></i> Módulos de Finanzas y
-                            Liderazgo Masculino
-                        </li>
-                        <li>
-                            <i class="fas fa-star"></i> Acceso VIP a eventos
-                            exclusivos
-                        </li>
-                    </ul>
-                    <a
-                      <a href="pasarela-elite.html" class="price-btn btn-elite">DOMINIO TOTAL</a>
-                        >ADQUIRIR FORMACIÓN ELITE</a
-                    >
+    <div class="price-card featured" data-aos="zoom-in-up" data-aos-delay="200" data-aos-once="true">
+        <div class="tag">RECOMENDADO</div>
+        <h2>ELITE PLUS</h2>
+        <div class="amount">3$ <span>/sem</span></div>
+        <ul class="list-benefits">
+            <li><i class="fas fa-star"></i> <strong>Mentoría Directa con Don Fer</strong></li>
+            <li><i class="fas fa-star"></i> Curso Avanzado: Atracción y Lenguaje</li>
+            <li><i class="fas fa-star"></i> Técnicas de Lookmaxing Avanzado</li>
+            <li><i class="fas fa-star"></i> Módulos de Finanzas y Liderazgo</li>
+            <li><i class="fas fa-star"></i> Acceso VIP a eventos exclusivos</li>
+        </ul>
 
-                    <div class="payment-logos">
-                        <i class="fab fa-cc-visa"></i>
-                        <i class="fab fa-cc-mastercard"></i>
-                        <i class="fab fa-cc-paypal"></i>
-                        <span style="font-size: 0.8rem; font-weight: bold"
-                            >MERCADO PAGO</span
-                        >
-                    </div>
-                </div>
-            </section>
+        <a href="pasarela-elite.html" class="btn-cta-plan btn-gold-anim">
+            ADQUIRIR FORMACIÓN ELITE
+        </a>
+
+        <div class="payment-logos">
+            <i class="fab fa-cc-visa"></i>
+            <i class="fab fa-cc-mastercard"></i>
+            <i class="fab fa-cc-paypal"></i>
+            <span style="font-size: 0.8rem; font-weight: bold">MERCADO PAGO</span>
+        </div>
+    </div>
+</section>
         </main>
 
         <footer>
